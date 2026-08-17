@@ -82,7 +82,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL")
+        default="postgresql://movie_watchlist_db_4bos_user:1Fs6uzBaxNmTlLb6FtEU7XlfKK5xcPkW@dpg-da1khpu7bikc739aq3t0-a/movie_watchlist_db_4bos",
+        conn_max_age=600,
     )
 }
 
