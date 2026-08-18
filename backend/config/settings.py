@@ -122,10 +122,17 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
-# Add your deployed frontend URL here or via environment variable
-CORS_ALLOWED_ORIGINS = os.getenv(
-    'CORS_ALLOWED_ORIGINS',
-    'http://localhost:5173,http://127.0.0.1:5173'
-).split(',')
+# CORS configuration
+CORS_ALLOWED_ORIGINS = [
+    "https://movie-watchlist-2-fmei.onrender.com",
+    "https://movie-watchlist-2-final.onrender.com",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+
+# Or read from ENV if provided, split by comma
+env_cors = os.getenv('CORS_ALLOWED_ORIGINS')
+if env_cors:
+    CORS_ALLOWED_ORIGINS += [origin.strip() for origin in env_cors.split(',') if origin.strip()]
 
 CORS_ALLOW_CREDENTIALS = True
